@@ -1,0 +1,80 @@
+
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>PROFILE PAGE</title>
+{% endblock %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <a class="navbar-brand" href="#"><b style="color:white">PROFILE DETAILS</b></a>
+    <br>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'home_url' %}">HOME</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active" style="padding-left:940px">
+            <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+            </li>
+            
+            <!-- <li class="nav-item">
+              <img src="{{ user.profile_photo.url }}" width="45px" height="45px" alt="image/" class="rounded-circle"/>
+           </li> -->
+           <br>
+            <div class="btn-group" role="group" class="topnav-left" >
+                <button id="btnGroupDrop1" type="button" class="btn btn-info btn-sm dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                  <img src="{{ user.profile_photo.url }}" width="40px" height="40px" alt="image/" class="rounded-circle"/>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="{% url 'update_url' user.id %}"> Update Profile</a>
+                    <a class="dropdown-item" href="#">Bid History</a>
+                    <a class="dropdown-item" href="{% url 'showproduct_url' %}">My Products</a>
+                    <a class="dropdown-item" href="#">Wishlist</a>
+                    <a class="dropdown-item" href="{% url 'logout_url' %}">logout</a>
+                </div>          
+            </div>
+            
+        </ul>
+    </div>
+</nav>
+
+<h2 style="text-align:center">USER DETAILS</h2>
+<div class="container">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">FIRST NAME</th>
+      <th scope="col">LAST NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">CONTACT NUMBER</th>
+      <th scope="col">GENDER</th>
+      
+      
+    </tr>
+  </thead>
+  <tbody class="table-info">
+  {% for user in data %}
+    <tr>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phone_number}}</td>
+      <td>{{user.gender}}</td>
+     
+    {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'product_url' %}">Want To Sell</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+{% endblock %}

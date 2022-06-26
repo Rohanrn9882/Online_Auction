@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}
+ <title>Profile Page</title>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container jumbotron">
+    <form method="post" enctype="multipart/form-data">
+      <h2 style="text-align:center">Hi, {{user.username}}</h2>
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="UPDATE PROFILE" class="btn btn-success btn-md">
+
+      </form>
+
+</div>
+
+
+
+{% endblock %}

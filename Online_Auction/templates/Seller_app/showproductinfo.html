@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>SHOW PRODUCT PAGE</title>
+{% endblock %}
+
+{% block content %}
+
+<h1 style="text-align:center">PRODUCT DETAILS</h1>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">product_name</th>
+            <th scope="col">product_info_details</th>
+            <th scope="col">product_baseprice</th>
+            <th scope="col">product_location</th>
+            <th scope="col">product_status</th>
+        </tr>
+        </thead>
+        <tbody class="table-info text-dark">
+            {% for i in object_list %}
+        <tr>
+            {% if i.product_verify %}
+
+            <td>{{i.product_name}}</td>
+            <td>{{i.product_info_details}}</td>
+            <td>{{i.product_baseprice}}</td>
+            <td>{{i.product_location}}</td>
+            <td><button class="btn btn-primary btn-md"> ADD TO Bid</button></td>
+
+            {% else %}
+
+            <td>{{i.product_name}}</td>
+            <td>{{i.product_info_details}}</td>
+            <td>{{i.product_baseprice}}</td>
+            <td>{{i.product_location}}</td>
+            <td><p>Your Product is Under Verification</p></td>
+            
+            
+            {% endif %}
+        </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
